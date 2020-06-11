@@ -1,0 +1,180 @@
+.waves {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  margin-bottom: -7px;
+  /*Fix for safari gap*/
+  min-height: 100px;
+  max-height: 150px;
+}
+.content {
+  position: relative;
+  height: 20vh;
+  text-align: center;
+  background-color: white;
+}
+/* Animation */
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 25s;
+}
+.wave-bottom {
+  background-color: white;
+  height: 100px;
+  width: 100%;
+  border-radius: 0 0 20px 20px;
+}
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height: 80px;
+    min-height: 40px;
+  }
+  .content {
+    height: 30vh;
+  }
+}
+@media (max-width: 600px) {
+  .wave-bottom {
+    height: 200px;
+  }
+}
+
+/*  searchbar  */
+
+.container {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 100px;
+  bottom: 300px;
+  width: 100px;
+  height: 50px;
+}
+.search {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 60px;
+  width: 0px;
+  height: 50px;
+  background: #fab958;
+  border-radius: 50%;
+  transition: all 1s;
+  z-index: 4;
+  box-shadow: 0 0 25px 0 #938e8e;
+}
+.search :hover {
+  cursor: pointer;
+}
+.search::before {
+  content: '';
+  position: absolute;
+  margin: auto;
+  top: 22px;
+  right: 0;
+  bottom: 0;
+  left: 20px;
+  width: 12px;
+  height: 2px;
+  background: white;
+  transform: rotate(45deg);
+  transition: all 0.5s;
+}
+.search::after {
+  content: '';
+  position: absolute;
+  margin: auto;
+  top: -5px;
+  right: 0;
+  bottom: 0;
+  left: 0px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: all 0.5s;
+}
+
+input {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 40px;
+  outline: none;
+  border: none;
+  background: rgba(243, 229, 208, 0.34);
+  color: white;
+  text-shadow: 0 0 10px pink;
+  padding: 0 80px 0 20px;
+  border-radius: 30px;
+  transition: all 1s;
+  opacity: 0;
+  z-index: 5;
+  font-weight: bolder;
+  letter-spacing: 0.1em;
+}
+input:hover {
+  cursor: pointer;
+}
+input:focus {
+  width: 120px;
+  opacity: 1;
+  cursor: text;
+}
+input:focus ~ .search {
+  right: -250px;
+  background: #504d4d;
+  z-index: 6;
+}
+input:focus ~ .search::before {
+  top: 0;
+  left: 0;
+  width: 25px;
+}
+input:focus ~ .search::after {
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  border: none;
+  background: white;
+  border-radius: 0%;
+  transform: rotate(-45deg);
+}
+
+input::placeholder {
+  color: white;
+  opacity: 0.5;
+  font-weight: bolder;
+}
