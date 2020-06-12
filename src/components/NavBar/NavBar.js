@@ -50,13 +50,13 @@ const StyledMenu = styled.nav`
 const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>
-      <a href="/">
+      <a href="/home">
         <img src={home} alt="home" /> home
       </a>
-      <a href="/">
+      <a href="/stats">
         <img src={legal} alt="statistics" /> statistics
       </a>
-      <a href="/">
+      <a href="/legal">
         <img src={stats} alt="legal" /> legal
       </a>
 

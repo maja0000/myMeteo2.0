@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import './mian.css';
+import './mainPage.css';
 // components
-import Navbar from '../NavBar/NavBar';
 import DailyDetails from './dailyDetails/dailyDetails';
 import WeekForcast from './WeekForcast/WeekForcast';
 
@@ -39,14 +38,13 @@ function MainPage() {
   return (
     <div>
       <PictureBackground>
-        <Navbar />
         <BlurredBackground>
           <DailyDetails />
 
           <DailyMainInfo>
             <div>
               <div>
-                <span style={{ color: 'white', fontSize: '100px' }}>17</span>
+                <span style={{ color: 'white', fontSize: '5em' }}>17</span>
                 <span style={{ color: 'white', fontSize: '50px' }}>°C</span>
                 <span>F</span>
                 {/* * 9 / 5 + 32).toFixed(2) */}

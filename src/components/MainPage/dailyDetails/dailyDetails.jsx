@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import './dailyDetails.css';
 // icons
-import rain from '../../../img/rain-icon.svg';
+import rain from '../../../img/white-cloud.svg';
 
 const DialyDetailsContainer = styled.div`
   //   background-color: green;
-  height: 500px;
+  // height: 500px;
   margin-top: 200px;
   width: 100%;
   position: absolute;
@@ -14,6 +14,9 @@ const DialyDetailsContainer = styled.div`
   font-size: 23px;
   display: flex;
   padding: 20px;
+  //
+  height: 60%;
+  justify-content: space-around;
   @media (max-width: 600px) {
     flex-direction: column;
   }
@@ -23,8 +26,8 @@ export default function DailyDetails() {
     <div>
       <DialyDetailsContainer>
         <div className="short-desc">
-          <span style={{ fontSize: '2em', margin: '30px 0 30px 30px' }}>
-            Today
+          <span style={{ fontSize: '1.5em', margin: '0 0 30px 30px' }}>
+            Today, ______
           </span>
           <div
             style={{
@@ -50,21 +53,21 @@ export default function DailyDetails() {
             <span>Friday</span>
             <div>
               <span>21"C</span>
-              <img src={rain} alt=" cloud"></img>
+              <img src={rain} alt=" cloud" className="cloud-icon"></img>
             </div>
           </div>
           <div className="slide">
             <span>Friday</span>
             <div>
               <span>21"C</span>
-              <img src={rain} alt=" cloud"></img>
+              <img src={rain} alt=" cloud" className="cloud-icon"></img>
             </div>
           </div>
           <div className="slide">
             <span>Friday</span>
             <div>
               <span>21"C</span>
-              <img src={rain} alt=" cloud"></img>
+              <img src={rain} alt=" cloud" className="cloud-icon"></img>
             </div>
           </div>
         </div>
