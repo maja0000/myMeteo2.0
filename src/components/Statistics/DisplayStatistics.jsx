@@ -60,7 +60,7 @@ export default function Statistics({
               <h3>Average weather in 2019</h3>
 
               <div>
-                <h4 style={{ marginTop: '0' }}>__berlin____</h4>
+                <h4 style={{ marginTop: '0' }}>{city}</h4>
                 <div className="container">
                   <input
                     type="text"

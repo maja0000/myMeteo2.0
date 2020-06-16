@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import './mainPage.css';
+import moment from 'moment';
 // components
 import DailyDetails from './dailyDetails/dailyDetails';
 import WeekForcast from './WeekForcast/WeekForcast';
+import { WeatherContext } from '../WeatherContext/WeatherContext';
 
 const PictureBackground = styled.div`
   background-image: url('https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=802&q=80');
@@ -27,14 +29,42 @@ height: '200px',
 width: '100%',
 `;
 const DailyMainInfo = styled.div`
-  height: 20%;
-  width: 40%;
+  height: 10%;
+  width: 50%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   text-align: center;
 `;
+const ButtonFC = styled.button`
+  border-radius: 50%;
+  border: none;
+  color: black;
+  :focus {
+    outline: none;
+  }
+`;
+
 function MainPage() {
+  const [weatherDisplay, setWeatherDisplay] = useContext(WeatherContext);
+  // const handleChange = useContext(WeatherContext);
+  console.log('!', weatherDisplay);
+  const [temp, setTemp] = useState(weatherDisplay.list[0].main.temp.toFixed());
+  const [celcius, setCelcius] = useState(true);
+  // const handleKeyPress = (event) => {
+  //   if (event.key === 'Enter') {
+  //     handleChange();
+  //   }
+  // };
+  const toFahrenheit = () => {
+    if (!celcius) {
+      setTemp(weatherDisplay.list[0].main.temp.toFixed());
+      setCelcius(true);
+    } else {
+      setCelcius(false);
+      setTemp(((temp * 9) / 5 + 32).toFixed());
+    }
+  };
   return (
     <div>
       <PictureBackground>
@@ -44,15 +74,31 @@ function MainPage() {
           <DailyMainInfo>
             <div>
               <div>
-                <span style={{ color: 'white', fontSize: '5em' }}>17</span>
-                <span style={{ color: 'white', fontSize: '50px' }}>°C</span>
-                <span>F</span>
-                {/* * 9 / 5 + 32).toFixed(2) */}
+                <span style={{ color: 'white', fontSize: '4.5em' }}>
+                  {temp}
+                </span>
+                {celcius ? (
+                  <span style={{ color: 'white', fontSize: '50px' }}>°C</span>
+                ) : (
+                  <span style={{ color: 'white', fontSize: '50px' }}>°F</span>
+                )}
+                <ButtonFC onClick={toFahrenheit}>
+                  {!celcius ? 'C' : 'F'}
+                </ButtonFC>
               </div>
-              <span style={{ color: 'white' }}>Thursday, 11.05.2020</span>
-
+              <span style={{ color: 'white' }}>
+                {moment().format(' h:mm a')}
+              </span>
+              <br />
+              <span style={{ color: 'white' }}>
+                {moment().format('dddd')}, {moment().format('MMM Do')}{' '}
+              </span>
               <div className="container">
-                <input type="text" placeholder="Search..." />
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  // onKeyPress={handleKeyPress}
+                />
                 <div className="search"></div>
               </div>
             </div>

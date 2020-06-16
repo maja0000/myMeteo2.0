@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import './dailyDetails.css';
 // icons
 import rain from '../../../img/white-cloud.svg';
+//componnets
+import { WeatherContext } from '../../WeatherContext/WeatherContext';
 
 const DialyDetailsContainer = styled.div`
   //   background-color: green;
@@ -22,12 +24,15 @@ const DialyDetailsContainer = styled.div`
   }
 `;
 export default function DailyDetails() {
+  const [weatherDisplay, setWeatherDisplay] = useContext(WeatherContext);
+
   return (
     <div>
       <DialyDetailsContainer>
         <div className="short-desc">
           <span style={{ fontSize: '1.5em', margin: '0 0 30px 30px' }}>
-            Today, ______
+            Today,{' '}
+            <span style={{ fontSize: '20px' }}>{weatherDisplay.city.name}</span>
           </span>
           <div
             style={{
@@ -57,16 +62,16 @@ export default function DailyDetails() {
             </div>
           </div>
           <div className="slide">
-            <span>Friday</span>
+            <span>Saturday</span>
             <div>
-              <span>21"C</span>
+              <span>18"C</span>
               <img src={rain} alt=" cloud" className="cloud-icon"></img>
             </div>
           </div>
           <div className="slide">
-            <span>Friday</span>
+            <span>Sunday</span>
             <div>
-              <span>21"C</span>
+              <span>20"C</span>
               <img src={rain} alt=" cloud" className="cloud-icon"></img>
             </div>
           </div>
